@@ -1,68 +1,110 @@
-import { makeStyles, fade } from '@material-ui/core/styles';
+import { makeStyles, fade } from "@material-ui/core/styles";
+import { Directions } from "@material-ui/icons";
 
 const drawerWidth = 0;
 
 export default makeStyles((theme) => ({
-  appBar: {
-    boxShadow: 'none',
-    borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
+  header: {
+    width: "100%",
+    height: "79px",
+    position: "fixed",
+    display: "flex",
+    zIndex: "99",
+    background: "white",
+    boxShadow: "0 4px 12px 0 rgb(0 0 0 / 5%)",
+  },
+
+  navitems1: {
+    // marginTop: "8px",
+    display: "flex",
+    flex: "0.7",
+  },
+
+  logo: {
+    display: "flex",
+    justifyContent: "center",
+    paddingRight: "10px",
+    paddingLeft: "50px",
+    "& img": {
+      marginTop: "12px",
+      width: "50px",
+      height: "50px",
     },
   },
-  title: {
-    flexGrow: 1,
-    alignItems: 'center',
-    display: 'flex',
-    textDecoration: 'none',
+
+  navitem: {
+    display: " flex",
   },
-  image: {
-    marginRight: '10px',
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
+
+  itemHeading: {
+    marginRight: "5px",
+    marginLeft: "5px",
+    paddingTop: "25px",
+    paddingBottom: "25px",
+    paddingRight: "15px",
+    paddingLeft: "15px",
+    fontWeight: "bold",
+    paddingBottom: "20px",
+
+    "&:hover": {
+      borderBottom: "5px solid",
+      borderBottomColor: "#ee5f73",
     },
   },
-  grow: {
-    flexGrow: 1,
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+
+  navSearch: {
+    marginTop: "15px",
+    display: "flex",
+    flex: "0.5",
+
+    "& input": {
+      width: "29em",
+      height: "3em",
+      border: "none",
+      background: " #f5f5f6",
+      outline: "none",
+      color: "#696e79",
+
+      // "&:focus": {
+      //   background: "white",
+      //   outline: "1px solid black",
+      // },
     },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: 'auto',
+  },
+
+  SearchIcon: {
+    paddingBottom: "5px",
+    background: " #f5f5f6",
+    fontSize: "40px",
+    padding: "10px",
+    color: "#696e79",
+  },
+
+  navitems2: {
+    marginTop: "15px",
+    display: "flex",
+    justifyContent: "space-around",
+    flex: "0.2",
+  },
+
+  rightIcon: {
+    paddingRight: "11px",
+    paddingLeft: "11px",
+    paddingBottom: "25px",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    color: "gray",
+
+    "&:hover": {
+      borderBottom: "5px solid",
+      borderBottomColor: "#ee5f73",
     },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
+    "& a": {
+      fontSize: "11px",
+      fontWeight: "bold",
+      color: "black",
+      // textAlign: "center",
     },
   },
 }));
