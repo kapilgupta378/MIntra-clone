@@ -1,5 +1,5 @@
-import { makeStyles, fade } from "@material-ui/core/styles";
-import { Directions } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
+// import { Directions } from "@material-ui/icons";
 
 const drawerWidth = 0;
 
@@ -91,6 +91,7 @@ export default makeStyles((theme) => ({
     paddingRight: "11px",
     paddingLeft: "11px",
     paddingBottom: "25px",
+    paddingTop: "0px",
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
@@ -106,5 +107,18 @@ export default makeStyles((theme) => ({
       color: "black",
       // textAlign: "center",
     },
+  },
+
+  iconwrap: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  carticon: {
+    color: "gray",
+  },
+  cartname: {
+    fontSize: "11px",
+    fontWeight: "bold",
+    color: "black",
   },
 }));

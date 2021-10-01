@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Badge,
-  MenuItem,
-  Menu,
-  Typography,
-  Button,
-} from "@material-ui/core";
+import { IconButton, Badge, MenuItem, Menu } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
 import { Link, useLocation } from "react-router-dom";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
@@ -19,7 +10,7 @@ import useStyles from "./styles";
 import Dropdown from "../Dropdown/dropdownnav/Dropdown";
 import ProfileDropdown from "../Dropdown/profiledropdown/ProfileDropdown";
 
-const PrimarySearchAppBar = ({ totalItems }) => {
+const PrimarySearchAppBar = ({ totalItems, setLoading }) => {
   const men = { color: "#ee5f73", background: " #ee5f73" };
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -34,8 +25,6 @@ const PrimarySearchAppBar = ({ totalItems }) => {
   const [dropdown, setDropdown] = useState(false);
   const [dropProfile, setDropProfile] = useState(false);
 
-  // const open = Boolean(anchorEl);
-  // console.log(dropdown);
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -62,12 +51,12 @@ const PrimarySearchAppBar = ({ totalItems }) => {
       <header className={classes.header}>
         <div className={classes.navitems1}>
           <nav className={classes.navitem}>
-            <div className={classes.logo}>
+            <Link to="/" className={classes.logo}>
               <img
                 src="https://www.searchpng.com/wp-content/uploads/2019/01/Myntra-logo-png-icon.png"
                 alt="logo"
               />
-            </div>
+            </Link>
             <div
               onMouseEnter={() => {
                 setDropdown(true);
@@ -78,7 +67,12 @@ const PrimarySearchAppBar = ({ totalItems }) => {
               className={classes.itemHeading}
             >
               <a>MEN</a>
-              <Dropdown props={men} dropdown={dropdown} />
+              <Dropdown
+                setLoading={setLoading}
+                props={men}
+                dropdown={dropdown}
+                setDropdown={setDropdown}
+              />
             </div>
 
             <div
@@ -157,12 +151,27 @@ const PrimarySearchAppBar = ({ totalItems }) => {
             <FavoriteBorderOutlinedIcon />
             <a>Wishlist</a>
           </div>
-          <div className={classes.rightIcon}>
-            <LocalMallOutlinedIcon />
-            <a>Beg</a>
-          </div>
+          {location.pathname === "/" && (
+            <div className={classes.rightIcon}>
+              <IconButton
+                component={Link}
+                to="/cart"
+                aria-label="Show cart items"
+                color="inherit"
+                style={{ paddingTop: "0px" }}
+              >
+                <Badge badgeContent={totalItems} color="secondary">
+                  <div className={classes.iconwrap}>
+                    <LocalMallOutlinedIcon className={classes.carticon} />
+                    <a className={classes.cartname}>Beg</a>
+                  </div>
+                </Badge>
+              </IconButton>
+            </div>
+          )}
         </div>
       </header>
+      {renderMobileMenu}
     </>
   );
 };

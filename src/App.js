@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { CssBaseline } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import { Navbar, Products, Cart, Checkout } from "./components";
 import { commerce } from "./lib/commerce";
+import { NavItemOpen } from "./components/Navbar/navItemOpen/NavItemOpen";
+
 const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [order, setOrder] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -75,9 +77,11 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+      <div style={{ display: "flex" }}>
         <CssBaseline />
         <Navbar
+          loading={loading}
+          setLoading={setLoading}
           totalItems={cart.total_items}
           handleDrawerToggle={handleDrawerToggle}
         />
@@ -104,6 +108,9 @@ const App = () => {
               onCaptureCheckout={handleCaptureCheckout}
               error={errorMessage}
             />
+          </Route>
+          <Route exact path="/selectpro">
+            <NavItemOpen loading={loading} setLoading={setLoading} />
           </Route>
         </Switch>
       </div>

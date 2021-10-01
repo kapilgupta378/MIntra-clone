@@ -1,11 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   dropdown: {
     top: "79px",
-    left: "0px",
-    width: "100em",
-    height: "100em",
+    left: "103px",
+    width: "auto",
+    height: "auto",
     display: "none",
     position: "absolute",
     zIndex: "1",
@@ -18,8 +18,8 @@ export default makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     backgroundColor: "rgba(0,0,0,.3)",
-    width: "100em",
-    height: "100em",
+    width: "auto",
+    height: "auto",
   },
 
   itemswrap: {
@@ -48,5 +48,12 @@ export default makeStyles(() => ({
     height: "1px",
     margin: "12px 0 0 0px",
     backgroundColor: "#eaeaec",
+  },
+  textDeco: {
+    textDecoration: "none",
+    color: theme.palette.grey[700],
+    "&:hover": {
+      fontWeight: "bold",
+    },
   },
 }));
